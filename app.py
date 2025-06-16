@@ -22,17 +22,10 @@ logger.info(f"Rows with movieId=862: \n{movies_df[movies_df['movieId'] == 862]}"
 logger.info(f"tfidf_matrix shape: {tfidf_matrix.shape}")
 
 def get_content_recommendations(movie_id, tfidf_matrix, movies_df, top_k=10):
-    try:
-        movie_id = int(movie_id) if isinstance(movie_id, (int, str)) else movie_id
-    except ValueError:
-        logger.error(f"Invalid movie_id: {movie_id}")
-        return pd.DataFrame(columns=['movieId', 'title', 'similarity_score'])
+    movie_id = int(movie_id) if isinstance(movie_id, (int, str)) else movie_id
     
     logger.info(f"Processing recommendations for movie_id: {movie_id}")
     idx = movies_df.index[movies_df['movieId'] == movie_id].tolist()
-    if not idx:
-        logger.warning(f"movieId={movie_id} not found in movies_df")
-        return pd.DataFrame(columns=['movieId', 'title', 'similarity_score'])
     idx = idx[0]
     
     cosine_sim = cosine_similarity(tfidf_matrix[idx:idx+1], tfidf_matrix)[0]
