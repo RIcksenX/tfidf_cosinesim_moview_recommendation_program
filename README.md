@@ -1,4 +1,5 @@
 # Movie Recommender
+dataset: https://www.kaggle.com/code/rounakbanik/movie-recommender-systems/input
 
 ## Overview
 This repository contains a Flask-based web application that provides movie recommendations using TF-IDF vectorization and cosine similarity. The application allows users to select a movie from a dropdown menu and receive a list of similar movies based on content-based filtering. It also includes a Jupyter notebook for evaluating intra-list similarity (ILS) of recommendations.
@@ -73,6 +74,3 @@ Frontend dependencies (loaded via CDN):
 - Ensure `movies_df.pkl` and `tfidf_matrix.pkl` are present, as they contain the preprocessed movie data and TF-IDF matrix.
 - The application assumes movie IDs in `movies_df.pkl` are integers.
 - For large datasets, the API response time may vary depending on the server and query complexity.
-
-## License
-This project is licensed under the MIT License.
